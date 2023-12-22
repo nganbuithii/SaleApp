@@ -1,0 +1,26 @@
+{% extends 'admin/master.html' %}
+
+
+{% block body %}
+
+
+<!-- kiểm tra xem user đãng nhấp chưa -->
+{% if current_user.is_authenticated %}
+    <h1>CHÀO MỪNG BẠN ĐẾN VỚI TRANG QUẢN TRỊ</h1>
+    <h3> Hello {{ current_user.name}}</h3>
+{% else %}
+    <!-- tất cả login method là POST-->
+    <form method ="post" action="/admin/login">
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="Tên đăng nhập" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">đăng nhập</button>
+    </form>
+{% endif %}
+
+{% endblock %}
