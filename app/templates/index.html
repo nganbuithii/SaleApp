@@ -13,19 +13,21 @@
                     <h4 class="card-title">{{p.name}}</h4>
                     <p class="card-text">{{p.price}}</p>
                     <a href="#" class="btn btn-primary">xem chi tiết</a>
-                    <a href="#" class="btn btn-danger">đặt hàng</a>
+                    <a href="#" class="btn btn-danger " onclick="addToCart({{p.id}},'{{p.name}}',{{p.price}})">đặt hàng</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </section>
+<!--Phaan trang -->
 <ul class="pagination container center">
     {% for i in range(pages) %}
     <li class="page-item"><a class="page-link" href="/?page={{i+1}}">{{i+1}}</a></li>
     {% endfor %}
-
-
 </ul>
+<script src="{{url_for('static', filename='js/cart.js')}}">
+
+</script>
 {% endblock %}
 
